@@ -1,9 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatMenuModule
+} from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {environment} from '../environments/environment';
+
+
 
 @NgModule({
   declarations: [
@@ -11,12 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    MatInputModule,
+    MatButtonModule,
+    MatMenuModule,
     AppRoutingModule,
-    MatButtonModule, 
-    MatCheckboxModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {}
