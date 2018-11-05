@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireStorage} from 'angularfire2/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,5 @@ import { AngularFireStorage} from 'angularfire2/storage';
 export class AppComponent {
   title = 'shopping-web-app';
 
-  constructor(private afStorage: AngularFireStorage) {}
+  constructor(private firestore: AngularFirestore) {}
 }
