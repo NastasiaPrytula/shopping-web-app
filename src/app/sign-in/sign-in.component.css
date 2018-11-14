@@ -12,11 +12,13 @@
     padding: 10px 0px 0px 2px;
     width: 100%; 
   }
+  
   a {
     display: block; 
     text-align: center;
     margin: 20px;
   }
+
 
   .button {
     width: 100%; 

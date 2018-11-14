@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AuthService } from './sign-up/auth.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     AngularFireAuthModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 

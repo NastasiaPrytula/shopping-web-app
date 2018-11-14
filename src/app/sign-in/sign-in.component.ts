@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../sign-up/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,7 @@ export class SignInComponent implements OnInit {
   titleAlert: string = 'This field is required';
   post: any = '';
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.createForm();
@@ -42,7 +43,9 @@ export class SignInComponent implements OnInit {
       this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   }
 
-  onSubmit(post) {
-    this.post = post;
+  onSubmit() {
+    const email = this.formGroup.value.email;
+    const password = this.formGroup.value.password;
+    this.authService.signinUser(email,password);
   }
 }
