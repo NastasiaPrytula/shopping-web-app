@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { environment } from '../environments/environment';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +10,10 @@ import { environment } from '../environments/environment';
 })
 
 export class AppComponent implements OnInit {
-  title = 'shopping-web-app';
+  
+  constructor(public db: AngularFireDatabase) {}
+ 
  ngOnInit(){
   AngularFireModule.initializeApp(environment.firebase);
- }
-  constructor(private firestore: AngularFirestore) {}
+ } 
 }

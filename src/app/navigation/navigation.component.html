@@ -2,12 +2,19 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <button mat-button><a routerLink=''>Products</a></button>
+        <button mat-button ><a routerLink=''>Products</a></button>
         <button mat-button><a routerLink=''>Favourite</a></button>
         <button mat-button><a routerLink=''>Cart</a></button>
-        <button mat-button><a routerLink='/signin' routerLinkActive='active'>SignIn</a></button>
+          
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <button mat-button><a routerLink='/signin' routerLinkActive='active'>Register/Login</a></button>
+        </ng-template>
+      
+        <button mat-button><a routerLink='/admin-products'  routerLinkActive='active' *ngIf="authService.isAuthenticated()" >Admin Panel</a></button>
+       <button mat-button><a routerLink='' (click)="onLogout()"  *ngIf="authService.isAuthenticated()">Logout</a></button>
       </div>
     </div>
   </div>
 </div>
+
 

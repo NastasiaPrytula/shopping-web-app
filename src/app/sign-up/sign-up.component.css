@@ -1,24 +1,24 @@
 .container {
-    padding: 10px;   
-  }
+  padding: 10px;   
+}
   
-  .form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 50%;
-  }
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 50%;
+}
   
-  .form-element_signup {
-    padding: 10px 0px 0px 2px;
-    width: 100%; 
-  }
+.form-element_signup {
+  padding: 10px 0px 0px 2px;
+  width: 100%; 
+}
   
-  a {
-    display: block; 
-    text-align: center;
-    margin: 20px;
-  }
+a {
+  display: block; 
+  text-align: center;
+  margin: 20px;
+}
 
-  .button_signup {
-    width: 100%; 
-  }
+.button_signup {
+  width: 100%; 
+}

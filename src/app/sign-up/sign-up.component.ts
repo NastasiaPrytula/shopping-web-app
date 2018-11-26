@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs';
+import { 
+  FormBuilder, 
+  FormGroup, 
+  Validators 
+} from '@angular/forms';       
 import { AuthService } from './auth.service';
 
 @Component({
@@ -12,8 +18,11 @@ export class SignUpComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
   post: any = '';
+  users:  Observable<any[]>;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private db: AngularFireDatabase) {
+    this.users = db.list('users').valueChanges();
+  }
 
   ngOnInit() {
     this.createForm();
@@ -43,10 +52,14 @@ export class SignUpComponent implements OnInit {
       this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   }
 
-  onSubmit() {
-    // this.post = post;
+  onCick() {
     const email = this.formGroup.value.email;
     const password = this.formGroup.value.password;
     this.authService.signupUser(email,password);  
+    this.db.list('/users').push({Email: email,Password: password});
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }

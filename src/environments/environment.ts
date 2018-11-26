@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDQ2qPWcfDhO0kKgK080NJ8WDC6WtNrDg0",
-    authDomain: "shopping-backend-firebase.firebaseapp.com",
-    databaseURL: "https://shopping-backend-firebase.firebaseio.com",
-    projectId: "shopping-backend-firebase",
-    storageBucket: "shopping-backend-firebase.appspot.com",
-    messagingSenderId: "464796882008"
+    apiKey: "AIzaSyA62RIqgCv2Ob_-3fBbHq1cZ2jnMvMOTEo",
+    authDomain: "shopping-backend-firebas-15106.firebaseapp.com",
+    databaseURL: "https://shopping-backend-firebas-15106.firebaseio.com",
+    projectId: "shopping-backend-firebas-15106",
+    storageBucket: "shopping-backend-firebas-15106.appspot.com",
+    messagingSenderId: "429353138596"
   }
 };
 
