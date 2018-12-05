@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input} from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MatDialog } from '@angular/material';
 
 import { AddNewProductsComponent } from '../add-new-products/add-new-products.component';
 import { AdminProductsService } from './admin-products.service';
 import { Products } from './Products.model';
+
+
 
 @Component({
   selector: 'app-admin-products',
@@ -14,9 +16,14 @@ import { Products } from './Products.model';
 
 export class AdminProductsComponent implements OnInit {
   
+
+  
   productsList: Products[];
 
-  constructor( public dialog: MatDialog, private products: AdminProductsService, private db: AngularFireDatabase, private adminProductsService: AdminProductsService) {}
+  constructor( public dialog: MatDialog, 
+               private products: AdminProductsService, 
+               private db: AngularFireDatabase, 
+               private adminProductsService: AdminProductsService) {}
   
   openDialog(): void {
     let dialogRef = this.dialog.open(AddNewProductsComponent, {
@@ -40,7 +47,9 @@ export class AdminProductsComponent implements OnInit {
   }
 
   onEdit(products: Products) {
+    this.openDialog()
     this.adminProductsService.selectedProducts = Object.assign({}, products);
+    
   }
  
   onDelete(key: string) {

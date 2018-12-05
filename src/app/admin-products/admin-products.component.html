@@ -5,7 +5,7 @@
         <button mat-raised-button color="warn" (click)='openDialog()'>Add Products</button>
       </div> 
       
-      <table class="table table-sm table-hover ">
+      <table class="table table-sm">
         <tr >
           <th>Name</th>
           <th>Price</th>
@@ -15,7 +15,8 @@
           <td>{{products.name}}</td>
           <td>{{products.price}}</td>
           <td>{{products.description}}</td>
-            <button mat-stroked-button color="warn" (click)="openDialog(onEdit(products))">Edit</button>
+    
+            <button mat-stroked-button color="warn" (click)="onEdit(products)">Edit</button>
             <button mat-stroked-button color="warn" (click)="onDelete(products.key)">Delete</button>
         </tr>
       </table>

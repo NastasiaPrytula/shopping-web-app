@@ -15,7 +15,8 @@ import {
   MatMenuModule,
   MatPaginatorModule,
   MatTableModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCardModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ import { AuthService } from './sign-up/auth.service';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminProductsService } from './admin-products/admin-products.service';
 import { AddNewProductsComponent } from './add-new-products/add-new-products.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { AddNewProductsComponent } from './add-new-products/add-new-products.com
     SignUpComponent,
     NavigationComponent,
     AdminProductsComponent,
-    AddNewProductsComponent
+    AddNewProductsComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { AddNewProductsComponent } from './add-new-products/add-new-products.com
     MatMenuModule,
     MatPaginatorModule,
     MatTableModule,
+    MatCardModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,

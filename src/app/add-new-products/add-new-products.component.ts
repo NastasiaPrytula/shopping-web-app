@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog,MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms'; 
 import { AdminProductsService } from '../admin-products/admin-products.service';
+// import { FileUpload } from '../fileupload';
 
 @Component({
   selector: 'app-add-new-products',
@@ -10,9 +11,12 @@ import { AdminProductsService } from '../admin-products/admin-products.service';
 })
 export class AddNewProductsComponent implements OnInit {
  
-  constructor ( private adminProductsService: AdminProductsService, public dialogRef: MatDialogRef <AddNewProductsComponent>) {}
+  constructor ( private adminProductsService: AdminProductsService, 
+                public dialogRef: MatDialogRef <AddNewProductsComponent>) {}
   
   ngOnInit() {}
+
+  
 
   onSubmit(productsForm: NgForm) {
     if (productsForm.value.key == null)
