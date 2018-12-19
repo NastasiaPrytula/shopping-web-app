@@ -17,9 +17,9 @@ export class AdminProductsComponent implements OnInit {
   productsList: Products[];
 
   constructor( public dialog: MatDialog, 
-               private products: AdminProductsService, 
+                public products: AdminProductsService, 
                private db: AngularFireDatabase, 
-               private adminProductsService: AdminProductsService) {}
+               public adminProductsService: AdminProductsService) {}
   
   openDialog(): void {
     let dialogRef = this.dialog.open(AddNewProductsComponent, {

@@ -13,8 +13,8 @@ import { AdminProductsService } from '../admin-products/admin-products.service';
 })
 export class AddNewProductsComponent implements OnInit {
 
-  constructor ( private adminProductsService: AdminProductsService, 
-                private db: AngularFireDatabase,
+  constructor ( public adminProductsService: AdminProductsService, 
+                public db: AngularFireDatabase,
                 public dialogRef: MatDialogRef <AddNewProductsComponent>) {}
   
   ngOnInit() {}

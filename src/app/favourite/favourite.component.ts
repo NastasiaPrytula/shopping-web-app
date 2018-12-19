@@ -26,7 +26,7 @@ export class FavouriteComponent implements OnInit {
   result: number[];
 
   constructor( public dialog: MatDialog, 
-               private ProductsService: ProductsService) {}
+               public ProductsService: ProductsService) {}
   
 	ngOnInit() {
 		this.getFavouriteProduct();

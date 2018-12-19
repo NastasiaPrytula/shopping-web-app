@@ -10,8 +10,8 @@ import {  ProductsService } from '../products/products.service';
 
 export class NavigationComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-          private ProductsService: ProductsService
+  constructor(public authService: AuthService,
+          public ProductsService: ProductsService
     ) {}
 
   ngOnInit() {}

@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
   titleAlert: string = 'This field is required';
   post: any = '';
 
-  constructor(private authService: AuthService, 
+  constructor(public authService: AuthService, 
     private formBuilder: FormBuilder,
     private router:Router) {}
 

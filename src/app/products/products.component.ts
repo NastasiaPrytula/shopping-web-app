@@ -22,8 +22,8 @@ export class ProductsComponent implements OnInit {
   result: number[];
 
   constructor( 
-               private adminProductsService: AdminProductsService,
-               private ProductsService: ProductsService,
+               public adminProductsService: AdminProductsService,
+               public ProductsService: ProductsService,
                private orderPipe: OrderPipe ) {}
  
   ngOnInit() {

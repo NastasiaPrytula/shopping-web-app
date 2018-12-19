@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
   post: any = '';
   users:  Observable<any[]>;
 
-  constructor(private authService: AuthService, 
+  constructor(public authService: AuthService, 
     private formBuilder: FormBuilder, 
     private db: AngularFireDatabase,
     private router: Router) {

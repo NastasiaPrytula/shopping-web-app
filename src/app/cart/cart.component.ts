@@ -25,8 +25,8 @@ export class CartComponent implements OnInit {
   result: number[];
 
   constructor( private activatedRoute: ActivatedRoute,
-    private adminProductsService: AdminProductsService,
-    private ProductsService:ProductsService
+    public adminProductsService: AdminProductsService,
+    public ProductsService:ProductsService
     ) {}
 
   ngOnInit() {
