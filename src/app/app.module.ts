@@ -8,6 +8,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { OrderModule } from 'ngx-order-pipe';
+import {MatIconModule} from '@angular/material/icon';
+import { AppRoutingModule } from './app-routing.module';
+
 
 import {
   MatInputModule,
@@ -19,7 +23,6 @@ import {
   MatCardModule
 } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -30,6 +33,10 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminProductsService } from './admin-products/admin-products.service';
 import { AddNewProductsComponent } from './add-new-products/add-new-products.component';
 import { ProductsComponent } from './products/products.component';
+import { FavouriteComponent } from './favourite/favourite.component';
+import { CartComponent } from './cart/cart.component';
+import { SortPipe } from './sort.pipe';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +46,10 @@ import { ProductsComponent } from './products/products.component';
     NavigationComponent,
     AdminProductsComponent,
     AddNewProductsComponent,
-    ProductsComponent
+    ProductsComponent,
+    FavouriteComponent,
+    CartComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,9 @@ import { ProductsComponent } from './products/products.component';
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    OrderModule,
+    MatIconModule
   ],
   entryComponents: [
     AddNewProductsComponent

@@ -7,6 +7,8 @@ import {
   Validators 
 } from '@angular/forms';       
 import { AuthService } from './auth.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +22,10 @@ export class SignUpComponent implements OnInit {
   post: any = '';
   users:  Observable<any[]>;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private db: AngularFireDatabase) {
+  constructor(private authService: AuthService, 
+    private formBuilder: FormBuilder, 
+    private db: AngularFireDatabase,
+    private router: Router) {
     this.users = db.list('users').valueChanges();
   }
 
@@ -52,12 +57,14 @@ export class SignUpComponent implements OnInit {
       this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   }
 
-  onCick() {
+  onSubmit() {
     const email = this.formGroup.value.email;
     const password = this.formGroup.value.password;
     this.authService.signupUser(email,password);  
     this.db.list('/users').push({Email: email,Password: password});
-  }
+    alert('User Registeration');
+    }
+
 
   onLogout() {
     this.authService.logout();

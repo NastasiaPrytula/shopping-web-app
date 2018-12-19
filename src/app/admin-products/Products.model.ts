@@ -2,5 +2,6 @@ export class Products {
     key : string;
     name : string;
     price : number;
-    description: string
+    description: string;
+    imagePath: string;   
 }

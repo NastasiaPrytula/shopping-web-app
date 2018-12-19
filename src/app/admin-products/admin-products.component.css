@@ -14,3 +14,8 @@ tr {
 tr > th {
   background-color: rgb(214, 214, 216);
 }
+
+.img-responsive {
+  width: 50px;
+  height: 50px;
+}

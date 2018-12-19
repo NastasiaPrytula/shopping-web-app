@@ -6,8 +6,6 @@ import { AddNewProductsComponent } from '../add-new-products/add-new-products.co
 import { AdminProductsService } from './admin-products.service';
 import { Products } from './Products.model';
 
-
-
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
@@ -15,8 +13,6 @@ import { Products } from './Products.model';
 })
 
 export class AdminProductsComponent implements OnInit {
-  
-
   
   productsList: Products[];
 
@@ -43,18 +39,17 @@ export class AdminProductsComponent implements OnInit {
         SaveData["key"] = element.key;
         this.productsList.push(SaveData as Products);
       });
-    });
+    });  
   }
 
   onEdit(products: Products) {
     this.openDialog()
     this.adminProductsService.selectedProducts = Object.assign({}, products);
-    
   }
  
   onDelete(key: string) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminProductsService.deleteProducts(key);
     }
-  }
+  } 
 }

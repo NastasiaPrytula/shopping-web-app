@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog,MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms'; 
+import { AngularFireDatabase} from 'angularfire2/database';
+
 import { AdminProductsService } from '../admin-products/admin-products.service';
-// import { FileUpload } from '../fileupload';
+// import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-new-products',
@@ -10,13 +12,12 @@ import { AdminProductsService } from '../admin-products/admin-products.service';
   styleUrls: ['./add-new-products.component.css']
 })
 export class AddNewProductsComponent implements OnInit {
- 
+
   constructor ( private adminProductsService: AdminProductsService, 
+                private db: AngularFireDatabase,
                 public dialogRef: MatDialogRef <AddNewProductsComponent>) {}
   
   ngOnInit() {}
-
-  
 
   onSubmit(productsForm: NgForm) {
     if (productsForm.value.key == null)
@@ -24,6 +25,7 @@ export class AddNewProductsComponent implements OnInit {
     else
     this.adminProductsService.updateProducts(productsForm.value);
     this.resetForm(productsForm);
+    
   }
 
   resetForm(productsForm?: NgForm) {
@@ -33,12 +35,12 @@ export class AddNewProductsComponent implements OnInit {
       key: null,
       name: '',
       price: 0,
-      description: ''
+      description: '',
+      imagePath:''
     }
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-  
+  } 
 }

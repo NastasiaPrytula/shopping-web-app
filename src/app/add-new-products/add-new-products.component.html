@@ -1,11 +1,18 @@
+<div class="container">
 <form #productsForm="ngForm"  >
   <p>Add new products</p>
-    <div class="container">
-      <input type="hidden" name="key" key="ngModel" [(ngModel)]="adminProductsService.selectedProducts.key">
-
-      
-        
+    
+  <input type="hidden" name="key"  [(ngModel)]="adminProductsService.selectedProducts.key">
+     
       <div class="form-group">
+          <mat-form-field>
+        <input matInput  class="form-control" #imagePath [(ngModel)]="adminProductsService.selectedProducts.imagePath" name="imagePath" required>
+          </mat-form-field>
+      </div>
+
+      <img [src]="imagePath.value" class="image-responsive" >
+      
+        <div class="form-group">
         <mat-form-field>
           <input matInput  name="name"  [(ngModel)]="adminProductsService.selectedProducts.name" placeholder="Product" required>
         </mat-form-field>
@@ -13,20 +20,19 @@
     
       <div class="form-group">
         <mat-form-field>
-          <input matInput class="form-control" name="price"  [(ngModel)]="adminProductsService.selectedProducts.price" placeholder="Price">
+          <input matInput class="form-control" name="price" type="number" [(ngModel)]="adminProductsService.selectedProducts.price" placeholder="Price" required>
         </mat-form-field>
       </div>
 
       <div class="form-group">
         <mat-form-field>
-          <input matInput class="form-control" name="description"  [(ngModel)]="adminProductsService.selectedProducts.description" placeholder="Description">
+          <input matInput class="form-control" name="description"  [(ngModel)]="adminProductsService.selectedProducts.description" placeholder="Description" required>
         </mat-form-field>
       </div>
 
       <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button  cdkFocusInitial (click)="onSubmit(productsForm)">Add</button>
+        <button mat-button   cdkFocusInitial (click)="onSubmit(productsForm)">Add</button>
       </div>
-    </div>
 </form>
-
+</div>
