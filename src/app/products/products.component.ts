@@ -20,12 +20,13 @@ export class ProductsComponent implements OnInit {
   productsList: Products[];
   name:string;
   result: number[];
+  term;
 
-  constructor( 
+  constructor(
                public adminProductsService: AdminProductsService,
                public ProductsService: ProductsService,
                private orderPipe: OrderPipe ) {}
- 
+
   ngOnInit() {
     var Data = this.adminProductsService.getData();
     Data.snapshotChanges().subscribe(item => {
@@ -38,16 +39,16 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  Search(){
-    if (this.name != ""){
-    this.productsList = this.productsList.filter(res=>
-      {
-        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-      });
-    }else if  (this.name ==""){
-      this.ngOnInit();
-    } 
-  }
+  // Search(){
+  //   if (this.name != ""){
+  //   this.productsList = this.productsList.filter(res=>
+  //     {
+  //       return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+  //     });
+  //   }else if  (this.name ==""){
+  //     this.ngOnInit();
+  //   }
+  // }
 
   add(products: Products) {
     this.ProductsService.addFavouriteProduct(products);

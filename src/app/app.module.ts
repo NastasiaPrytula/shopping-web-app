@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { OrderModule } from 'ngx-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -70,7 +71,8 @@ import { SortPipe } from './sort.pipe';
     FormsModule,
     MatDialogModule,
     OrderModule,
-    MatIconModule
+    MatIconModule,
+    Ng2SearchPipeModule
   ],
   entryComponents: [
     AddNewProductsComponent
