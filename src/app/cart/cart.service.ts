@@ -10,7 +10,9 @@ export class CartService {
   navbarCartCount = 0;
   cartProducts: Products[];
 
-  constructor() {}
+  constructor() {
+    this.calculateLocalCartProdCounts();
+  }
 
 addToCart(data: Products): void {
     let a: Products[];

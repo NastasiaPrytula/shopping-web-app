@@ -40,6 +40,7 @@ import { FavouriteService } from './favourite/favourite.service';
 import { CartService } from './cart/cart.service';
 
 import { environment } from '../environments/environment';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { environment } from '../environments/environment';
     ProductsComponent,
     FavouriteComponent,
     CartComponent,
-    SortPipe
+    SortPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

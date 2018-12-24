@@ -10,7 +10,9 @@ export class FavouriteService {
   navbarFavProdCount = 0;
   favoruiteProducts: Products[];
 
-  constructor() {}
+  constructor() {
+    this.calculateLocalFavProdCounts();
+  }
 
   addFavouriteProduct(data: Products): void {
     let a: Products[];
@@ -25,6 +27,7 @@ export class FavouriteService {
   getLocalFavouriteProducts(): Products[] {
     const product: Products[] = JSON.parse(localStorage.getItem('favourite_products')) || [];
     return product;
+    this.calculateLocalFavProdCounts();
   }
 
   removeLocalFavourite(products: Products) {
