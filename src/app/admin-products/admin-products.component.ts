@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { AddNewProductsComponent } from '../add-new-products/add-new-products.component';
 import { AdminProductsService } from './admin-products.service';
 import { Products } from './Products.model';
+import { ToastrService } from '../toastr.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -13,17 +14,17 @@ import { Products } from './Products.model';
 })
 
 export class AdminProductsComponent implements OnInit {
-  
+
   productsList: Products[];
 
-  constructor( public dialog: MatDialog, 
-                public products: AdminProductsService, 
-               private db: AngularFireDatabase, 
-               public adminProductsService: AdminProductsService) {}
-  
+  constructor( public dialog: MatDialog,
+               public products: AdminProductsService,
+               private db: AngularFireDatabase,
+               public adminProductsService: AdminProductsService,
+               private toastrService: ToastrService) {}
+
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddNewProductsComponent, {
-    });
+    let dialogRef = this.dialog.open(AddNewProductsComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -39,17 +40,18 @@ export class AdminProductsComponent implements OnInit {
         SaveData["key"] = element.key;
         this.productsList.push(SaveData as Products);
       });
-    });  
+    });
   }
 
   onEdit(products: Products) {
     this.openDialog()
     this.adminProductsService.selectedProducts = Object.assign({}, products);
   }
- 
+
   onDelete(key: string) {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.adminProductsService.deleteProducts(key);
+      this.toastrService.error('Product has been removed!');
     }
-  } 
+  }
 }

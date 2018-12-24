@@ -2,20 +2,24 @@
 
   <div class="search">
     <mat-form-field>
-      <input matInput type="text"  [(ngModel)]="name" placeholder="Search" (input)="Search()">
+      <input
+      matInput type="text"
+      [(ngModel)]="term"
+      placeholder="Search">
     </mat-form-field>
   </div>
 
+
   <div class="sort">
-    <button mat-raised-button type="button" (click)="sort()"><i class="material-icons">
-        sort
-        </i></button>
+    <button mat-raised-button type="button" (click)="sort()">Sort by price<i class="material-icons">
+        swap_vert
+    </i></button>
   </div>
 </div>
 
 <div class="container">
 
-  <mat-card class="example-card" *ngFor="let products of cartProducts | sort: {property: column, order: order}">
+  <mat-card class="example-card" *ngFor="let products of cartProducts | filter:term | sort: {property: column, order: order}">
     <mat-card-header>
       <mat-card-title >{{products.name}}</mat-card-title>
     </mat-card-header>

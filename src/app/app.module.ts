@@ -9,10 +9,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { OrderModule } from 'ngx-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
-
-
+import { ToastrModule } from 'ngx-toastr';
 import {
   MatInputModule,
   MatButtonModule,
@@ -24,7 +24,6 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -36,7 +35,12 @@ import { ProductsComponent } from './products/products.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { CartComponent } from './cart/cart.component';
 import { SortPipe } from './sort.pipe';
+import { ToastrService } from './toastr.service';
+import { FavouriteService } from './favourite/favourite.service';
+import { CartService } from './cart/cart.service';
 
+import { environment } from '../environments/environment';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ import { SortPipe } from './sort.pipe';
     ProductsComponent,
     FavouriteComponent,
     CartComponent,
-    SortPipe
+    SortPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -70,12 +75,20 @@ import { SortPipe } from './sort.pipe';
     FormsModule,
     MatDialogModule,
     OrderModule,
-    MatIconModule
+    MatIconModule,
+    Ng2SearchPipeModule,
+    ToastrModule.forRoot()
   ],
   entryComponents: [
     AddNewProductsComponent
   ],
-  providers: [AuthService, AdminProductsService],
+  providers: [
+    AuthService,
+    AdminProductsService,
+    ToastrService,
+    FavouriteService,
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 

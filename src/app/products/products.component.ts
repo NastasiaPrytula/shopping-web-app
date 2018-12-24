@@ -6,6 +6,9 @@ import { SortPipe } from '../sort.pipe';
 import { AdminProductsService } from '../admin-products/admin-products.service';
 import { Products } from '../admin-products/Products.model';
 import { ProductsService } from '../products/products.service';
+import { ToastrService } from '../toastr.service';
+import { FavouriteService } from '../favourite/favourite.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -20,12 +23,16 @@ export class ProductsComponent implements OnInit {
   productsList: Products[];
   name:string;
   result: number[];
+  term;
 
-  constructor( 
+  constructor(
                public adminProductsService: AdminProductsService,
                public ProductsService: ProductsService,
-               private orderPipe: OrderPipe ) {}
- 
+               private orderPipe: OrderPipe,
+               private toastrService: ToastrService,
+               private favouriteService: FavouriteService,
+               private cartService: CartService) {}
+
   ngOnInit() {
     var Data = this.adminProductsService.getData();
     Data.snapshotChanges().subscribe(item => {
@@ -38,19 +45,9 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  Search(){
-    if (this.name != ""){
-    this.productsList = this.productsList.filter(res=>
-      {
-        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-      });
-    }else if  (this.name ==""){
-      this.ngOnInit();
-    } 
-  }
-
   add(products: Products) {
-    this.ProductsService.addFavouriteProduct(products);
+    this.favouriteService.addFavouriteProduct(products);
+    this.toastrService.success('Add to to favourite!');
   }
 
   sort(){
@@ -59,6 +56,8 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(products: Products) {
-    this.ProductsService.addToCart(products);
+    this.cartService.addToCart(products);
+    this.toastrService.success('Add to to cart!');
   }
+
 }
