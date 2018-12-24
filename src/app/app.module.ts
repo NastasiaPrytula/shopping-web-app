@@ -12,8 +12,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
-
-
+import { ToastrModule } from 'ngx-toastr';
 import {
   MatInputModule,
   MatButtonModule,
@@ -37,7 +36,9 @@ import { ProductsComponent } from './products/products.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { CartComponent } from './cart/cart.component';
 import { SortPipe } from './sort.pipe';
-
+import { ToastrService } from './toastr.service';
+import { FavouriteService } from './favourite/favourite.service';
+import { CartService } from './cart/cart.service';
 
 @NgModule({
   declarations: [
@@ -72,12 +73,19 @@ import { SortPipe } from './sort.pipe';
     MatDialogModule,
     OrderModule,
     MatIconModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ToastrModule.forRoot()
   ],
   entryComponents: [
     AddNewProductsComponent
   ],
-  providers: [AuthService, AdminProductsService],
+  providers: [
+    AuthService,
+    AdminProductsService,
+    ToastrService,
+    FavouriteService,
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,9 +1,9 @@
 <div class="container">
 <form #productsForm="ngForm"  >
   <p>Add new products</p>
-    
+
   <input type="hidden" name="key"  [(ngModel)]="adminProductsService.selectedProducts.key">
-     
+
       <div class="form-group">
           <mat-form-field>
         <input matInput  class="form-control" #imagePath [(ngModel)]="adminProductsService.selectedProducts.imagePath" name="imagePath" required>
@@ -11,13 +11,13 @@
       </div>
 
       <img [src]="imagePath.value" class="image-responsive" >
-      
+
         <div class="form-group">
         <mat-form-field>
           <input matInput  name="name"  [(ngModel)]="adminProductsService.selectedProducts.name" placeholder="Product" required>
         </mat-form-field>
       </div>
-    
+
       <div class="form-group">
         <mat-form-field>
           <input matInput class="form-control" name="price" type="number" [(ngModel)]="adminProductsService.selectedProducts.price" placeholder="Price" required>
@@ -32,7 +32,7 @@
 
       <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button   cdkFocusInitial (click)="onSubmit(productsForm)">Add</button>
+        <button mat-button cdkFocusInitial (click)="onSubmit(productsForm)">Add</button>
       </div>
 </form>
 </div>

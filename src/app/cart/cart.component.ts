@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {Pipe, PipeTransform} from '@angular/core';
 import { OrderPipe } from 'ngx-order-pipe';
@@ -5,8 +6,9 @@ import { SortPipe } from '../sort.pipe';
 
 import { AdminProductsService } from '../admin-products/admin-products.service';
 import { Products } from '../admin-products/Products.model';
-import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products/products.service';
+import { ToastrService } from '../toastr.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,21 +27,23 @@ export class CartComponent implements OnInit {
   result: number[];
 
   constructor( private activatedRoute: ActivatedRoute,
-    public adminProductsService: AdminProductsService,
-    public ProductsService:ProductsService
-    ) {}
+               public adminProductsService: AdminProductsService,
+               public ProductsService: ProductsService,
+               private toastrService: ToastrService,
+               public cartService: CartService) {}
 
   ngOnInit() {
     this.getCartProduct();
   }
 
   removeCartProduct(products: Products) {
-    this.ProductsService.removeLocalCartProduct(products);
+    this.cartService.removeLocalCartProduct(products);
+    this.toastrService.error('Delete from cart!');
     this.getCartProduct();
   }
 
   getCartProduct() {
-    this.cartProducts = this.ProductsService.getLocalCartProducts();
+    this.cartProducts = this.cartService.getLocalCartProducts();
   }
 
   sort(){
@@ -47,16 +51,6 @@ export class CartComponent implements OnInit {
     this.order = this.descending ? 1 : -1;
   }
 
-  Search(){
-    if (this.name != ""){
-      this.cartProducts = this.cartProducts.filter(res=>
-       {
-        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-      });
-    }else if  (this.name ==""){
-      this.ngOnInit();
-   } 
-  }
 }
-  
+
 

@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { 
-  FormBuilder, 
-  FormGroup, 
-  Validators 
-} from '@angular/forms';       
-import { AuthService } from './auth.service';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  NgForm
+} from '@angular/forms';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+
+import { AuthService } from './auth.service';
+import { ToastrService } from '../toastr.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,10 +25,11 @@ export class SignUpComponent implements OnInit {
   post: any = '';
   users:  Observable<any[]>;
 
-  constructor(public authService: AuthService, 
-    private formBuilder: FormBuilder, 
+  constructor(public authService: AuthService,
+    private formBuilder: FormBuilder,
     private db: AngularFireDatabase,
-    private router: Router) {
+    private router: Router,
+    private toastrService: ToastrService) {
     this.users = db.list('users').valueChanges();
   }
 
@@ -60,11 +64,10 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     const email = this.formGroup.value.email;
     const password = this.formGroup.value.password;
-    this.authService.signupUser(email,password);  
+    this.authService.signupUser(email,password);
     this.db.list('/users').push({Email: email,Password: password});
-    alert('User Registeration');
+    this.toastrService.success('Are you registered!');
     }
-
 
   onLogout() {
     this.authService.logout();
