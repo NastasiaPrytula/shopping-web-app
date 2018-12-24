@@ -24,7 +24,6 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -39,6 +38,8 @@ import { SortPipe } from './sort.pipe';
 import { ToastrService } from './toastr.service';
 import { FavouriteService } from './favourite/favourite.service';
 import { CartService } from './cart/cart.service';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
