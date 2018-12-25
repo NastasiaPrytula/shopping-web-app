@@ -12,10 +12,6 @@
 
         <button mat-button><a routerLink='/admin-products'  routerLinkActive='active' *ngIf="authService.user | async" >Admin Panel</a></button>
        <button mat-button><a routerLink='/products' (click)="onLogout()"  *ngIf="authService.user | async">Logout</a></button>
-
-        <ul class='nav navbar-brand navbar-right'>
-          <a *ngIf="authService.user | async">{{ (authService.user | async)?.email }}</a>
-        </ul>
       </div>
     </div>
   </div>

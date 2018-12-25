@@ -26,6 +26,7 @@ export class FavouriteComponent implements OnInit {
   column: any = 'price';
   name:string;
   result: number[];
+  term;
 
   constructor( public dialog: MatDialog,
                public ProductsService: ProductsService,

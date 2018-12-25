@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
   column: any = 'price';
   name:string;
   result: number[];
+  term;
 
   constructor( private activatedRoute: ActivatedRoute,
                public adminProductsService: AdminProductsService,
