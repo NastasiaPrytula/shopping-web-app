@@ -24,7 +24,7 @@ export class AuthService {
         .createUserWithEmailAndPassword(email, password)
         .then((value) => {
           console.log('Success!', value);
-          this.router.navigate(['/']);
+          this.router.navigate(['admin-products']);
         })
         .catch(error => console.log('error'));
     }
@@ -35,14 +35,13 @@ export class AuthService {
     .signInWithEmailAndPassword(email, password)
     .then(
       response => {
-        this.router.navigate(['/']);
+        this.router.navigate(['admin-products']);
         firebase.auth().currentUser.getIdToken()
           .then(
             (token: string) => this.token = token
           )
         }
       )
-
     .catch(
       error => console.log(error)
     );

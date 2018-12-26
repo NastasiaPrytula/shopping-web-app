@@ -38,9 +38,10 @@ import { SortPipe } from './sort.pipe';
 import { ToastrService } from './toastr.service';
 import { FavouriteService } from './favourite/favourite.service';
 import { CartService } from './cart/cart.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './sign-up/auth-guard.service';
 
 import { environment } from '../environments/environment';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AdminProductsService,
     ToastrService,
     FavouriteService,
-    CartService
+    CartService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

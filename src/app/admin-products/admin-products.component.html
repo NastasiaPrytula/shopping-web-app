@@ -1,25 +1,25 @@
-<div class="container" novalidate> 
+<div class="container" novalidate>
   <div class="row justify-content-center">
     <div class="col-8">
       <div class="button-add">
         
         <button mat-raised-button color="warn" (click)='openDialog()'>Add Products</button>
-      </div> 
+      </div>
       <table class="product">
-          
+
         <tr >
           <th>Name</th>
           <th>Price</th>
           <th>Description</th>
-          <th>photo</th>  
+          <th>photo</th>
         </tr>
-        
+
         <tr *ngFor="let products of productsList | orderBy : ['price'] ">
           <td>{{products.name}}</td>
           <td>{{products.price}} USD</td>
           <td>{{products.description}}</td>
           <td> <img [src]="products.imagePath" alt="{{ products.imagePath }}" class="img-responsive"></td>
-    
+
             <button mat-stroked-button color="warn" (click)="onEdit(products)">Edit</button>
             <button mat-stroked-button color="warn" (click)="onDelete(products.key)">Delete</button>
         </tr>
@@ -27,5 +27,5 @@
     </div>
   </div>
 </div>
-    
-          
+
+
